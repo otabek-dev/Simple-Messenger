@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Simple_Messenger
 {
-    internal class Message
+    [Serializable]
+    class Message
     {
         public string UserName { get; set; }
         public string MessageText { get; set; }
