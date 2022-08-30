@@ -5,14 +5,50 @@ namespace Simple_Messenger
 {
     internal class Program
     {
+        private static int MessageID;
+        private static string? UserName;
+        private static MessangerClientAPI API = new MessangerClientAPI();
+
+        private static void GetNewMessages()
+        {
+            Message msg = API.GetMessage(MessageID);
+            while (msg != null)
+            {
+                Console.WriteLine(msg);
+                MessageID++;
+                msg = API.GetMessage(MessageID);
+            }
+        }
+
         static void Main(string[] args)
         {
-            Message message = new Message("Otabek","Hello",DateTime.Now);
-            string output = JsonConvert.SerializeObject(message);
-            Console.WriteLine(output);
-            Message deserializedMsg = JsonConvert.DeserializeObject<Message>(output);
-            Console.WriteLine(deserializedMsg);
+            MessageID = 0;
+            Console.WriteLine("Введите Ваше имя:");
+            
+            UserName = Console.ReadLine();
 
+            string MessageText = "";
+            
+
+            while (MessageText != "exit")
+            {
+                GetNewMessages();
+                MessageText = Console.ReadLine();
+                if (MessageText.Length > 1)
+                {
+                    Message Sendmsg = new Message(UserName, MessageText, DateTime.Now);
+                    API.SendMessage(Sendmsg);
+                }
+                
+            }
+
+            //Message msg = new Message("Otabek", "Privet", DateTime.UtcNow);
+            //string output = JsonConvert.SerializeObject(msg);
+            //Console.WriteLine(output);
+            //Message deserializedMsg = JsonConvert.DeserializeObject<Message>(output);
+            //Console.WriteLine(deserializedMsg);
+            //{ "UserName":"Otabek","MessageText":"Privet","TimeStamp":"2021-03-24T18:04:47.8846682Z"}
+            //Otabek < 24.03.2021 18:04:47 >: Privet
 
             //Стандартный инструмент для сериализации.
             //BinaryFormatter binaryFormat = new BinaryFormatter();
@@ -39,6 +75,7 @@ namespace Simple_Messenger
             //{
             //    Console.WriteLine(e.Message);
             //}
+
         }
     }
 }
