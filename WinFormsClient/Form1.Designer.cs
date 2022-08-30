@@ -28,23 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.components = new System.ComponentModel.Container();
+            this.MessagesLB = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.MessageTB = new System.Windows.Forms.TextBox();
+            this.UserNameTB = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // listBox1
+            // MessagesLB
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.MessagesLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 10);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(776, 364);
-            this.listBox1.TabIndex = 0;
+            this.MessagesLB.FormattingEnabled = true;
+            this.MessagesLB.ItemHeight = 15;
+            this.MessagesLB.Location = new System.Drawing.Point(12, 10);
+            this.MessagesLB.Name = "MessagesLB";
+            this.MessagesLB.Size = new System.Drawing.Size(776, 364);
+            this.MessagesLB.TabIndex = 0;
             // 
             // button1
             // 
@@ -55,35 +57,42 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Send";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // MessageTB
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.MessageTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(11, 409);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(776, 23);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Message";
+            this.MessageTB.Location = new System.Drawing.Point(11, 409);
+            this.MessageTB.Name = "MessageTB";
+            this.MessageTB.Size = new System.Drawing.Size(776, 23);
+            this.MessageTB.TabIndex = 2;
+            this.MessageTB.Text = "Message";
             // 
-            // textBox2
+            // UserNameTB
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox2.Location = new System.Drawing.Point(11, 380);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(210, 23);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "User name";
+            this.UserNameTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.UserNameTB.Location = new System.Drawing.Point(11, 380);
+            this.UserNameTB.Name = "UserNameTB";
+            this.UserNameTB.Size = new System.Drawing.Size(210, 23);
+            this.UserNameTB.TabIndex = 3;
+            this.UserNameTB.Text = "User name";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 442);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.UserNameTB);
+            this.Controls.Add(this.MessageTB);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.MessagesLB);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -93,9 +102,10 @@
 
         #endregion
 
-        private ListBox listBox1;
+        private ListBox MessagesLB;
         private Button button1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox MessageTB;
+        private TextBox UserNameTB;
+        private System.Windows.Forms.Timer timer1;
     }
 }
